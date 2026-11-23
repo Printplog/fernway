@@ -101,7 +101,7 @@ export function SiteStructuredData() {
         "@type": "WebPage",
         "@id": `${baseUrl}/#webpage`,
         url: baseUrl,
-        name: `${siteConfig.legalName} | Online Banking, High-Yield Savings & Debit Cards`,
+        name: `${siteConfig.legalName} | Online Banking`,
         description: siteConfig.description,
         inLanguage: siteConfig.locale,
         isPartOf: {

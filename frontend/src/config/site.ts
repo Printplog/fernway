@@ -14,9 +14,9 @@ export const siteConfig = {
   domain: "lindenwaybank.com",
   url: configuredUrl,
   supportEmail: "support@lindenwaybank.com",
-  tagline: "Online Banking, High-Yield Savings, Transfers & Debit Cards",
+  tagline: "Online Banking",
   description:
-    "Lindenway Bank (lindenwaybank.com) offers modern online banking with 4.10% APY high-yield savings, $0 standard ACH transfers, instant account moves, and physical Visa debit cards.",
+    "Secure online banking, personal accounts, bank transfers, and debit cards with Lindenway Bank.",
   keywords: [
     "Lindenway",
     "Lindenway Bank",
@@ -24,11 +24,9 @@ export const siteConfig = {
     "lindenwaybank.com",
     "online banking",
     "digital banking",
-    "high-yield savings account",
-    "personal checking account",
-    "physical Visa debit card",
-    "same-day ACH transfers",
-    "wire transfers",
+    "personal banking",
+    "debit cards",
+    "bank transfers",
     "online bank sign in",
   ],
   locale: "en-US",
@@ -36,10 +34,10 @@ export const siteConfig = {
 } as const;
 
 export const defaultOgImage = {
-  url: "/og-image",
+  url: "/og-image?v=2",
   width: 1200,
   height: 630,
-  alt: `${siteConfig.legalName} — Online Banking, High-Yield Savings & Debit Cards`,
+  alt: `${siteConfig.legalName} — Online Banking`,
 } as const;
 
 /** Areas that need a signed-in session. The proxy guards them; outside them a 401 is normal. */

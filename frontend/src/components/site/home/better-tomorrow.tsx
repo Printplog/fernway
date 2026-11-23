@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Bitcoin, Check, Landmark, type LucideIcon, PiggyBank } from "lucide-react";
+import { ArrowRight, Check, CreditCard, Landmark, type LucideIcon, PiggyBank } from "lucide-react";
 import { savingsApy } from "@/config/marketing";
 import { cn } from "@/lib/utils";
 import { SectionTitle } from "./section-title";
@@ -43,33 +43,33 @@ const features: Feature[] = [
     featured: true,
   },
   {
-    icon: Bitcoin,
-    label: "Crypto",
-    stat: "$10",
-    statNote: "minimum trade",
-    title: "Buy, Sell and Hold Crypto",
-    text: "Trade Bitcoin, Ethereum, Solana and USD Coin right next to your cash, without opening another app.",
-    points: ["See the fee before you confirm", "Track the return on every holding"],
-    href: "/#wealth",
-    cta: "Start with crypto",
+    icon: CreditCard,
+    label: "Debit Cards",
+    stat: "Visa",
+    statNote: "physical debit card",
+    title: "Spend Anywhere With Full Control",
+    text: "A physical Visa debit card linked directly to your balance, with instant freeze and spending controls from your dashboard.",
+    points: ["Freeze or unfreeze in one tap", "Set custom monthly spend limits"],
+    href: "/#card",
+    cta: "Explore debit cards",
   },
 ];
 
 export function BetterTomorrow() {
   return (
-    <section className="relative isolate overflow-hidden bg-beige py-[100px]">
+    <section className="relative isolate overflow-hidden bg-beige py-14 sm:py-20 lg:py-[100px]">
       <TrianglePattern className="absolute -top-10 -right-10 -z-10 h-[420px] w-[520px] opacity-[0.07]" />
       <TrianglePattern className="absolute -bottom-16 -left-24 -z-10 h-[360px] w-[440px] rotate-180 opacity-[0.05]" />
 
       <div className="site-container">
-        <SectionTitle title="Money For A Better Tomorrow" subtitle="Three accounts, one sign-in, and no surprises on your statement." />
+        <SectionTitle title="Money For A Better Tomorrow" subtitle="Checking, high-yield savings, and debit cards in one secure sign-in." />
 
-        <div className="mt-16 grid items-stretch gap-[30px] lg:grid-cols-3">
+        <div className="mt-10 grid items-stretch gap-5 sm:mt-12 sm:gap-6 lg:mt-16 lg:grid-cols-3 lg:gap-[30px]">
           {features.map((feature) => (
             <article
               key={feature.label}
               className={cn(
-                "reveal group relative flex flex-col overflow-hidden p-10 transition duration-300 hover:-translate-y-2",
+                "reveal group relative flex flex-col overflow-hidden p-6 transition duration-300 hover:-translate-y-2 sm:p-8 lg:p-10",
                 feature.featured
                   ? "bg-navy text-white shadow-[0_30px_60px_rgb(26_28_35/0.25)] lg:-my-4 lg:py-14"
                   : "bg-white text-navy shadow-[0_15px_40px_rgb(26_28_35/0.06)] hover:shadow-[0_25px_50px_rgb(26_28_35/0.12)]",

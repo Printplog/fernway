@@ -14,9 +14,8 @@ import { SiteStructuredData } from "@/components/site/seo/structured-data";
 import { defaultOgImage, siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: { absolute: `${siteConfig.legalName} | Online Banking, High-Yield Savings & Debit Cards` },
-  description:
-    "Bank online with Lindenway Bank at lindenwaybank.com. Earn 4.10% APY on high-yield savings, send $0 standard ACH transfers, and control your physical Visa debit card.",
+  title: { absolute: `${siteConfig.legalName} | Online Banking` },
+  description: siteConfig.description,
   alternates: {
     canonical: "/",
   },
@@ -25,16 +24,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: siteConfig.legalName,
     url: siteConfig.url,
-    title: `${siteConfig.legalName} | Online Banking, High-Yield Savings & Debit Cards`,
-    description:
-      "Bank online with Lindenway Bank at lindenwaybank.com. Earn 4.10% APY on high-yield savings, send $0 standard ACH transfers, and control your physical Visa debit card.",
+    title: `${siteConfig.legalName} | Online Banking`,
+    description: siteConfig.description,
     images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.legalName} | Online Banking, High-Yield Savings & Debit Cards`,
-    description:
-      "Bank online with Lindenway Bank at lindenwaybank.com. Earn 4.10% APY on high-yield savings, send $0 standard ACH transfers, and control your physical Visa debit card.",
+    title: `${siteConfig.legalName} | Online Banking`,
+    description: siteConfig.description,
     images: [defaultOgImage.url],
   },
 };

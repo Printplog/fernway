@@ -6,9 +6,8 @@ import { LOCAL_QUICK_SIGN_IN } from "@/config/features";
 import { defaultOgImage, siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Sign In to Online Banking",
-  description:
-    "Sign in securely to your Lindenway Bank online banking account at lindenwaybank.com to manage balances, transfers, and your physical Visa debit card.",
+  title: "Sign In",
+  description: "Sign in securely to your Lindenway Bank online banking account.",
   alternates: {
     canonical: "/sign-in",
   },
@@ -17,16 +16,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: siteConfig.legalName,
     url: `${siteConfig.url}/sign-in`,
-    title: `Sign In to Online Banking | ${siteConfig.legalName}`,
-    description:
-      "Access your Lindenway Bank online banking portal securely at lindenwaybank.com.",
+    title: `Sign In | ${siteConfig.legalName}`,
+    description: "Sign in securely to your Lindenway Bank online banking account.",
     images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Sign In to Online Banking | ${siteConfig.legalName}`,
-    description:
-      "Access your Lindenway Bank online banking portal securely at lindenwaybank.com.",
+    title: `Sign In | ${siteConfig.legalName}`,
+    description: "Sign in securely to your Lindenway Bank online banking account.",
     images: [defaultOgImage.url],
   },
 };

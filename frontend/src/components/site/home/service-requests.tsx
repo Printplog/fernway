@@ -40,8 +40,8 @@ const categories: Array<{ key: string; icon: LucideIcon; title: string; requests
   {
     key: "transfers",
     icon: ArrowRightLeft,
-    title: "Transfers & Crypto",
-    requests: ["Send Money by ACH or Wire", "Move Money Between Accounts", "Save a Recipient", "Buy or Sell Crypto"],
+    title: "Transfers & Wires",
+    requests: ["Send Money by ACH or Wire", "Move Money Between Accounts", "Save a Recipient", "Track Transfer Status"],
   },
 ];
 
@@ -51,11 +51,11 @@ export function ServiceRequests() {
   const step = (by: number) => setActiveIndex((index) => (index + by + categories.length) % categories.length);
 
   return (
-    <section id="support" className="scroll-mt-6 bg-beige py-[100px]">
+    <section id="support" className="scroll-mt-6 bg-beige py-14 sm:py-20 lg:py-[100px]">
       <div className="site-container">
         <SectionTitle title="Service Requests" subtitle="Everything you can do yourself in the Lindenway app." />
 
-        <div className="relative mt-14 lg:px-[-80px]">
+        <div className="relative mt-10 sm:mt-12 lg:mt-14">
           <button
             type="button"
             onClick={() => step(-1)}
@@ -64,7 +64,7 @@ export function ServiceRequests() {
           >
             <ArrowLeft className="size-5" />
           </button>
-          <div role="tablist" aria-label="Request categories" className="grid grid-cols-2 md:grid-cols-4">
+          <div role="tablist" aria-label="Request categories" className="grid grid-cols-2 gap-y-5 md:grid-cols-4 md:gap-y-0">
             {categories.map((category, index) => {
               const selected = index === activeIndex;
               return (
@@ -75,18 +75,18 @@ export function ServiceRequests() {
                   aria-selected={selected}
                   aria-controls="support-panel"
                   onClick={() => setActiveIndex(index)}
-                  className="flex flex-col items-center border-black/10 px-4 pb-4 text-center md:border-l md:last:border-r"
+                  className="flex flex-col items-center border-black/10 px-3 pb-2 text-center md:border-l md:px-4 md:pb-4 md:last:border-r"
                 >
                   <span
                     className={cn(
-                      "grid size-[90px] place-items-center rounded-full transition-colors",
+                      "grid size-16 place-items-center rounded-full transition-colors sm:size-20 md:size-[90px]",
                       selected ? "bg-white text-flame shadow-sm" : "border border-black/10 text-navy",
                     )}
                   >
-                    <category.icon className="size-9" strokeWidth={1.3} aria-hidden="true" />
+                    <category.icon className="size-7 sm:size-8 md:size-9" strokeWidth={1.3} aria-hidden="true" />
                   </span>
-                  <span className="mt-6 max-w-[180px] font-dm text-lg leading-7 font-medium text-navy">{category.title}</span>
-                  <ChevronDown className={cn("mt-2 size-6 text-flame", selected ? "visible" : "invisible")} aria-hidden="true" />
+                  <span className="mt-3 max-w-[160px] font-dm text-sm leading-snug font-medium text-navy sm:mt-5 sm:text-base md:mt-6 md:max-w-[180px] md:text-lg md:leading-7">{category.title}</span>
+                  <ChevronDown className={cn("mt-1.5 size-5 text-flame md:mt-2 md:size-6", selected ? "visible" : "invisible")} aria-hidden="true" />
                 </button>
               );
             })}
@@ -101,16 +101,16 @@ export function ServiceRequests() {
           </button>
         </div>
 
-        <div id="support-panel" role="tabpanel" className="reveal mt-12 grid gap-[30px] lg:grid-cols-2">
+        <div id="support-panel" role="tabpanel" className="reveal mt-8 grid gap-6 sm:mt-10 lg:mt-12 lg:grid-cols-2 lg:gap-[30px]">
           <ul className="bg-white">
             {active.requests.map((request) => (
               <li key={request} className="border-b border-black/5 last:border-0">
                 <Link
                   href="/sign-in"
-                  className="group flex h-[71px] items-center justify-between font-dm text-lg font-medium text-navy"
+                  className="group flex min-h-[60px] items-center justify-between font-dm text-base font-medium text-navy sm:h-[71px] sm:text-lg"
                 >
-                  <span className="px-[30px]">{request}</span>
-                  <span className="grid h-full w-[70px] place-items-center border-l border-black/5 text-stone transition-colors group-hover:bg-flame group-hover:text-white">
+                  <span className="px-5 py-3 sm:px-[30px] sm:py-0">{request}</span>
+                  <span className="grid w-14 shrink-0 self-stretch place-items-center border-l border-black/5 text-stone transition-colors group-hover:bg-flame group-hover:text-white sm:w-[70px]">
                     <ArrowRight className="size-5" />
                   </span>
                 </Link>

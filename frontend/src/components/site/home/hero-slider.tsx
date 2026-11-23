@@ -13,7 +13,7 @@ const slides = [
   {
     image: "/images/site/gen/hero-card.png",
     alt: "Lindenway Bank physical Visa debit card and online banking account",
-    title: "A Smarter Way to Spend, Save and Invest",
+    title: "A Smarter Way to Spend, Save and Send",
     text: "Checking, high-yield savings and transfers in one Lindenway Bank account, built around the way you manage money.",
   },
   {
@@ -45,9 +45,9 @@ export function HeroSlider() {
   }, [paused, go]);
 
   return (
-    <section aria-roledescription="carousel" aria-label="Highlights" className="site-container-wide">
+    <section aria-roledescription="carousel" aria-label="Highlights" className="mx-auto w-full max-w-[1920px] px-0 lg:px-[50px]">
       <div
-        className="relative isolate h-[620px] overflow-hidden bg-navy lg:h-[731px]"
+        className="relative isolate h-[540px] overflow-hidden bg-navy sm:h-[620px] lg:h-[731px]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onFocus={() => setPaused(true)}
@@ -71,12 +71,12 @@ export function HeroSlider() {
               fill
               priority={slideIndex === 0}
               sizes="(min-width: 1440px) 1340px, 100vw"
-              className={cn("-z-20 object-cover object-left", slideIndex === index && "animate-ken-burns")}
+              className={cn("-z-20 object-cover object-center lg:object-left", slideIndex === index && "animate-ken-burns")}
             />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/35 via-navy/55 to-navy/75" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/85 lg:bg-gradient-to-r lg:from-navy/35 lg:via-navy/55 lg:to-navy/75" />
             <TrianglePattern className="absolute inset-y-0 right-0 -z-10 hidden h-full w-[58%] lg:block" />
 
-            <div className="flex h-full items-center px-6 pb-48 sm:px-12 lg:pb-16 lg:pl-[585px]">
+            <div className="flex h-full items-center px-5 pt-6 pb-36 sm:px-10 sm:pb-40 lg:pt-0 lg:pb-16 lg:pl-[585px]">
               <div
                 className={cn(
                   "max-w-[670px]",
@@ -84,19 +84,19 @@ export function HeroSlider() {
                 )}
               >
                 {slideIndex === 0 ? (
-                  <h1 className="font-dm text-4xl leading-tight font-medium text-white sm:text-5xl lg:text-[60px] lg:leading-[72px]">
+                  <h1 className="font-dm text-[32px] leading-[1.15] font-medium text-white sm:text-5xl lg:text-[60px] lg:leading-[72px]">
                     {slide.title}
                   </h1>
                 ) : (
-                  <h2 className="font-dm text-4xl leading-tight font-medium text-white sm:text-5xl lg:text-[60px] lg:leading-[72px]">
+                  <h2 className="font-dm text-[32px] leading-[1.15] font-medium text-white sm:text-5xl lg:text-[60px] lg:leading-[72px]">
                     {slide.title}
                   </h2>
                 )}
-                <p className="mt-6 max-w-xl font-body text-lg text-white/80">{slide.text}</p>
+                <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-white/85 sm:mt-6 sm:text-lg">{slide.text}</p>
                 <Link
                   href="/sign-in"
                   tabIndex={slideIndex === index ? 0 : -1}
-                  className="mt-10 inline-flex h-[60px] items-center bg-white px-[30px] font-dm text-lg font-medium text-navy transition-colors hover:bg-flame hover:text-white"
+                  className="mt-7 inline-flex h-12 items-center bg-white px-7 font-dm text-base font-medium text-navy transition-colors hover:bg-flame hover:text-white sm:mt-10 sm:h-[60px] sm:px-[30px] sm:text-lg"
                 >
                   Sign In
                 </Link>
@@ -129,38 +129,38 @@ export function HeroSlider() {
           </span>
         </div>
 
-        <div className="absolute bottom-[60px] left-5 flex items-end gap-3 sm:gap-5 lg:bottom-[84px]">
-          <div className="flex flex-col gap-2.5">
+        <div className="absolute inset-x-5 bottom-8 flex items-end justify-between gap-3 sm:inset-x-10 sm:bottom-12 lg:inset-x-auto lg:bottom-[84px] lg:left-5 lg:justify-start lg:gap-5">
+          <div className="flex flex-col gap-2">
             <Link
               href="/sign-in"
-              className="flex h-[50px] w-[170px] items-center justify-between bg-ember px-4 font-dm text-base sm:w-[230px] sm:px-5 sm:text-lg font-medium text-white sm:w-[230px]"
+              className="flex h-11 items-center justify-between gap-3 bg-ember px-4 font-dm text-sm font-medium whitespace-nowrap text-white sm:h-[50px] sm:w-[230px] sm:px-5 sm:text-lg"
             >
               Make a Transfer
-              <CirclePlay className="size-5 text-white/70" aria-hidden="true" />
+              <CirclePlay className="size-4 shrink-0 text-white/75 sm:size-5" aria-hidden="true" />
             </Link>
             <IfSupportEmail>
-              <SupportEmailLink className="flex h-[50px] w-[170px] items-center justify-between bg-flame px-4 font-dm text-base sm:w-[230px] sm:px-5 sm:text-lg font-medium text-white sm:w-[230px]">
+              <SupportEmailLink className="flex h-11 items-center justify-between gap-3 bg-flame px-4 font-dm text-sm font-medium whitespace-nowrap text-white sm:h-[50px] sm:w-[230px] sm:px-5 sm:text-lg">
                 Make an Enquiry
-                <CirclePlay className="size-5 text-white/90" aria-hidden="true" />
+                <CirclePlay className="size-4 shrink-0 text-white/90 sm:size-5" aria-hidden="true" />
               </SupportEmailLink>
             </IfSupportEmail>
           </div>
-          <div className="flex gap-3 sm:gap-5">
+          <div className="flex shrink-0 gap-2 sm:gap-4 lg:gap-5">
             <button
               type="button"
               onClick={() => go(-1)}
               aria-label="Previous slide"
-              className="grid size-12 place-items-center bg-white/20 sm:size-[60px] text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-navy"
+              className="grid size-11 place-items-center bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-navy sm:size-[60px]"
             >
-              <ChevronLeft className="size-7" />
+              <ChevronLeft className="size-6 sm:size-7" />
             </button>
             <button
               type="button"
               onClick={() => go(1)}
               aria-label="Next slide"
-              className="grid size-12 place-items-center bg-white/20 sm:size-[60px] text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-navy"
+              className="grid size-11 place-items-center bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-navy sm:size-[60px]"
             >
-              <ChevronRight className="size-7" />
+              <ChevronRight className="size-6 sm:size-7" />
             </button>
           </div>
         </div>

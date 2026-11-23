@@ -112,45 +112,53 @@ export function SiteHeader() {
       </div>
 
       {/* Mobile and tablet */}
-      <div className="flex items-center justify-between lg:hidden">
-        <Link href="/" className="bg-brand-gradient flex h-[72px] items-center px-5">
-          <SiteLogo />
+      <div className="sticky top-0 z-30 flex items-center justify-between border-b border-black/5 bg-white/95 backdrop-blur lg:hidden">
+        <Link href="/" className="bg-brand-gradient flex h-[64px] items-center px-4 sm:h-[72px] sm:px-5">
+          <SiteLogo className="gap-2.5 [&_svg]:size-8 [&_span:last-child]:text-xl sm:[&_svg]:size-10 sm:[&_span:last-child]:text-2xl" />
         </Link>
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon-lg" className="mr-3 text-navy" aria-label="Open menu">
-              <Menu className="size-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-full max-w-xs font-body">
-            <SheetHeader>
-              <SheetTitle className="font-dm text-xl">Menu</SheetTitle>
-            </SheetHeader>
-            <nav aria-label="Site" className="flex flex-col gap-1 px-4" onClick={() => setOpen(false)}>
-              <Link href="/" className="rounded-md px-2 py-2.5 font-dm text-lg text-navy hover:bg-beige">
-                Home
-              </Link>
-              {[...serviceLinks, ...aboutLinks].map((item) => (
-                <Link key={item.title} href={item.href} className="rounded-md px-2 py-2.5 text-navy hover:bg-beige">
-                  {item.title}
-                </Link>
-              ))}
-              <Link href="/#contact" className="rounded-md px-2 py-2.5 text-navy hover:bg-beige">
-                Get In Touch
-              </Link>
-              <Separator className="my-2" />
-              <Button asChild size="lg" className="h-12 rounded-none bg-flame text-white hover:bg-ember">
-                <Link href="/sign-in">Login</Link>
+        <div className="flex items-center gap-2 pr-2 sm:gap-3 sm:pr-3">
+          <Link
+            href="/sign-in"
+            className="bg-brand-gradient inline-flex h-10 items-center px-4 font-dm text-sm font-medium text-white transition-opacity hover:opacity-90"
+          >
+            Sign In
+          </Link>
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon-lg" className="text-navy" aria-label="Open menu">
+                <Menu className="size-6" />
               </Button>
-            </nav>
-          </SheetContent>
-        </Sheet>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-full max-w-xs font-body">
+              <SheetHeader>
+                <SheetTitle className="font-dm text-xl">Menu</SheetTitle>
+              </SheetHeader>
+              <nav aria-label="Site" className="flex flex-col gap-1 px-4" onClick={() => setOpen(false)}>
+                <Link href="/" className="rounded-md px-2 py-2.5 font-dm text-lg text-navy hover:bg-beige">
+                  Home
+                </Link>
+                {[...serviceLinks, ...aboutLinks].map((item) => (
+                  <Link key={item.title} href={item.href} className="rounded-md px-2 py-2.5 text-navy hover:bg-beige">
+                    {item.title}
+                  </Link>
+                ))}
+                <Link href="/#contact" className="rounded-md px-2 py-2.5 text-navy hover:bg-beige">
+                  Get In Touch
+                </Link>
+                <Separator className="my-2" />
+                <Button asChild size="lg" className="h-12 rounded-none bg-flame text-white hover:bg-ember">
+                  <Link href="/sign-in">Login</Link>
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
-      <div className="bg-brand-gradient flex items-center justify-center gap-2 px-4 py-2.5 text-center font-body text-sm text-white lg:hidden">
-        <Megaphone className="size-4 shrink-0" aria-hidden="true" />
+      <div className="bg-brand-gradient flex items-center justify-center gap-2 px-3 py-2 text-center font-body text-xs text-white sm:px-4 sm:py-2.5 sm:text-sm lg:hidden">
+        <Megaphone className="size-3.5 shrink-0 sm:size-4" aria-hidden="true" />
         <span>
           Earn {savingsApy} APY¹ on High-Yield Savings.{" "}
-          <Link href="/#rates" className="font-medium underline underline-offset-2">
+          <Link href="/#rates" className="font-medium whitespace-nowrap underline underline-offset-2">
             More Details
           </Link>
         </span>

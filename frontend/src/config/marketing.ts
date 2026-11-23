@@ -83,8 +83,8 @@ export const faqItems = [
       "Sign in and freeze your physical Visa debit card from the Cards screen. No payments or withdrawals can go through until you unfreeze it.",
   },
   {
-    question: "Is crypto insured?",
+    question: "How do I reach Lindenway Bank support?",
     answer:
-      "No. Crypto is not a bank deposit, is not FDIC insured, and its value can go down as well as up. Only invest what you can afford to lose.",
+      "Sign in to your online banking dashboard and open the live Support widget in the bottom-right corner anytime to message our banking support team directly.",
   },
 ] as const;

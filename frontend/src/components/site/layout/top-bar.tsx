@@ -4,7 +4,7 @@ import { LifeBuoy, Mail, Search } from "lucide-react";
 
 const quickLinks = [
   { href: "/#rates", label: "Rates" },
-  { href: "/#wealth", label: "Invest" },
+  { href: "/#wealth", label: "Grow" },
   { href: "/#card", label: "Cards" },
 ];
 

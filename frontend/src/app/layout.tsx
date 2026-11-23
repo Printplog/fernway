@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Manrope } from "next/font/google";
 import { Providers } from "@/components/shared/providers";
-import { siteConfig } from "@/config/site";
+import { defaultOgImage, siteConfig } from "@/config/site";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.legalName,
   title: {
-    default: `${siteConfig.legalName} — Online Banking, High-Yield Savings & Debit Cards`,
+    default: `${siteConfig.legalName} | Online Banking`,
     template: `%s | ${siteConfig.legalName}`,
   },
   description: siteConfig.description,
@@ -44,22 +44,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: siteConfig.legalName,
-    title: `${siteConfig.legalName} — Online Banking, High-Yield Savings & Debit Cards`,
+    title: `${siteConfig.legalName} | Online Banking`,
     description: siteConfig.description,
-    images: [
-      {
-        url: "/og-image",
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.legalName} — Online Banking, High-Yield Savings & Debit Cards`,
-      },
-    ],
+    images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.legalName} — Online Banking, High-Yield Savings & Debit Cards`,
+    title: `${siteConfig.legalName} | Online Banking`,
     description: siteConfig.description,
-    images: ["/og-image"],
+    images: [defaultOgImage.url],
   },
   robots: {
     index: true,

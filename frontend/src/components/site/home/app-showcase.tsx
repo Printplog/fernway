@@ -20,39 +20,39 @@ const activity = [
 /** A phone mockup of the real Fernway app, built from the app's own visual language. */
 export function AppShowcase() {
   return (
-    <section className="overflow-hidden bg-beige py-[100px]">
-      <div className="site-container grid items-center gap-16 lg:grid-cols-[1fr_minmax(0,460px)]">
+    <section className="overflow-x-clip bg-beige py-14 sm:py-20 lg:py-[100px]">
+      <div className="site-container grid items-center gap-12 lg:grid-cols-[1fr_minmax(0,460px)] lg:gap-16">
         <div>
           <SectionTitle
             title="All Your Money, In One App"
             subtitle="Everything you can do at Lindenway, from managing cards to sending transfers, sits one tap from your balance."
             align="left"
           />
-          <ul className="reveal mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+          <ul className="reveal mt-8 grid gap-x-8 gap-y-6 sm:mt-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-8">
             {features.map((feature) => (
-              <li key={feature.title} className="flex gap-4">
-                <span className="bg-brand-gradient grid size-12 shrink-0 place-items-center text-white">
+              <li key={feature.title} className="flex gap-3.5 sm:gap-4">
+                <span className="bg-brand-gradient grid size-11 shrink-0 place-items-center text-white sm:size-12">
                   <feature.icon className="size-5" strokeWidth={1.7} aria-hidden="true" />
                 </span>
                 <span>
-                  <span className="block font-dm text-lg font-medium text-navy">{feature.title}</span>
-                  <span className="mt-1 block font-body text-[15px] leading-6 text-stone">{feature.text}</span>
+                  <span className="block font-dm text-base font-medium text-navy sm:text-lg">{feature.title}</span>
+                  <span className="mt-1 block font-body text-sm leading-6 text-stone sm:text-[15px]">{feature.text}</span>
                 </span>
               </li>
             ))}
           </ul>
           <Link
             href="/sign-in"
-            className="bg-brand-gradient reveal mt-12 inline-flex h-[60px] items-center px-[30px] font-dm text-lg font-medium text-white transition-opacity hover:opacity-90"
+            className="bg-brand-gradient reveal mt-8 inline-flex h-12 items-center px-7 font-dm text-base font-medium text-white transition-opacity hover:opacity-90 sm:mt-12 sm:h-[60px] sm:px-[30px] sm:text-lg"
           >
             Sign In
           </Link>
         </div>
 
-        <div aria-hidden="true" className="reveal relative mx-auto w-full max-w-[340px]">
-          <div className="absolute -inset-10 -z-10 rounded-full bg-amber/25 blur-3xl" />
-          <div className="rounded-[44px] border-[10px] border-navy bg-navy shadow-[0_40px_80px_rgb(26_28_35/0.35)]">
-            <div className="overflow-hidden rounded-[34px] bg-[#f8f5f1]">
+        <div aria-hidden="true" className="reveal relative mx-auto w-full max-w-[300px] sm:max-w-[340px]">
+          <div className="absolute -inset-4 -z-10 rounded-full bg-amber/20 blur-2xl sm:-inset-8 sm:blur-3xl" />
+          <div className="rounded-[40px] border-[8px] border-navy bg-navy shadow-[0_32px_64px_rgb(26_28_35/0.3)] sm:rounded-[44px] sm:border-[10px]">
+            <div className="overflow-hidden rounded-[32px] bg-[#f8f5f1] sm:rounded-[34px]">
               <div className="flex items-center justify-between px-5 pt-4 pb-2 font-body text-[11px] font-semibold text-navy">
                 <span>9:41</span>
                 <span className="h-5 w-20 rounded-full bg-navy" />
