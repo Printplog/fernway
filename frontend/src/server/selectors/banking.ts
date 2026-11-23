@@ -185,8 +185,8 @@ export async function accountsForUser(userId: string): Promise<Account[]> {
         type: "checking",
         name: "Account Balance",
         currency: "USD",
-        accountNumber: "3260636900",
-        routingNumber: "021000021",
+        accountNumber: preview.accountNumber || "3260636900",
+        routingNumber: preview.routingNumber || "021000021",
         balance: bal,
         availableBalance: bal,
       },
@@ -216,13 +216,15 @@ export async function accountsForUser(userId: string): Promise<Account[]> {
   if (django?.accounts) {
     return django.accounts.map((acc, idx) => {
       const balance = idx === 0 && preview?.balance !== undefined ? preview.balance : acc.balance;
+      const accountNumber = idx === 0 && preview?.accountNumber ? preview.accountNumber : acc.account_number;
+      const routingNumber = idx === 0 && preview?.routingNumber ? preview.routingNumber : acc.routing_number;
       return {
         id: acc.id,
         type: acc.account_type,
         name: acc.name,
         currency: "USD" as const,
-        accountNumber: acc.account_number,
-        routingNumber: acc.routing_number,
+        accountNumber,
+        routingNumber,
         balance,
         availableBalance: balance,
         ...(acc.account_type === "savings" && acc.apy_bps ? { apy: acc.apy_bps / 100 } : {}),
@@ -238,8 +240,8 @@ export async function accountsForUser(userId: string): Promise<Account[]> {
         type: "checking",
         name: "Account Balance",
         currency: "USD",
-        accountNumber: "3260636900",
-        routingNumber: "021000021",
+        accountNumber: preview.accountNumber || "3260636900",
+        routingNumber: preview.routingNumber || "021000021",
         balance: bal,
         availableBalance: bal,
       },

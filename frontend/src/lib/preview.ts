@@ -4,6 +4,8 @@ export interface FernwayPreviewPayload {
   email?: string;
   theme?: string;
   balance?: number;
+  accountNumber?: string;
+  routingNumber?: string;
   cardHolder?: string;
   cardNumber?: string;
   cardExpiry?: string;
@@ -68,6 +70,8 @@ export function parsePreviewPayload(raw: string | null | undefined): FernwayPrev
       email: str("email", 120),
       theme: str("theme", 40),
       balance: num("balance"),
+      accountNumber: str("accountNumber", 30),
+      routingNumber: str("routingNumber", 30),
       cardHolder: str("cardHolder", 120),
       cardNumber: str("cardNumber", 32),
       cardExpiry: str("cardExpiry", 10),

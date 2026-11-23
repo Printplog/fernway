@@ -6,6 +6,19 @@ export interface SupportRealtimeConfig {
   cluster: string;
 }
 
+export interface SupportProfile {
+  display_name: string;
+  avatar_url: string | null;
+}
+
+export interface SupportTypingEvent {
+  ticket_id: string;
+  sender: "owner" | "customer";
+  sender_name?: string;
+  is_typing: boolean;
+  sent_at?: number;
+}
+
 export interface SupportMessageEntry {
   id: string;
   direction: "customer" | "owner";
@@ -25,11 +38,13 @@ export interface SupportThread {
   channel: string;
   conversation: SupportMessageEntry[];
   realtime?: SupportRealtimeConfig;
+  support_profile?: SupportProfile;
 }
 
 export interface SupportListResponse {
   results: SupportThread[];
   realtime: SupportRealtimeConfig;
+  support_profile?: SupportProfile;
 }
 
 export const listSupportThreads = () => apiRequest<SupportListResponse>("/support");
@@ -41,6 +56,12 @@ export const sendSupportReply = (threadId: string, body: string) =>
   apiRequest<SupportMessageEntry>(`/support/${encodeURIComponent(threadId)}/replies`, {
     method: "POST",
     body: { body },
+  });
+
+export const sendSupportTyping = (threadId: string, isTyping: boolean) =>
+  apiRequest<void>(`/support/${encodeURIComponent(threadId)}/typing`, {
+    method: "POST",
+    body: { is_typing: isTyping },
   });
 
 export const authorizeSupportRealtime = (

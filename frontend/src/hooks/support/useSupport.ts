@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   authorizeSupportRealtime,
@@ -8,6 +8,7 @@ import {
   listSupportThreads,
   sendSupportReply,
   type SupportRealtimeConfig,
+  type SupportTypingEvent,
 } from "@/api/support";
 
 const noSubscription = () => () => {};
@@ -58,8 +59,14 @@ export function useSupportRealtime(options: {
   threadId?: string;
   channel?: string;
   onUpdate: () => void;
+  onTyping?: (event: SupportTypingEvent) => void;
 }) {
-  const { config, threadId, channel, onUpdate } = options;
+  const { config, threadId, channel, onUpdate, onTyping } = options;
+  const callbacksRef = useRef({ onUpdate, onTyping });
+
+  useEffect(() => {
+    callbacksRef.current = { onUpdate, onTyping };
+  }, [onTyping, onUpdate]);
 
   useEffect(() => {
     if (!config?.enabled || !config.key || !config.cluster || !threadId || !channel) return;
@@ -86,9 +93,17 @@ export function useSupportRealtime(options: {
       });
 
       const subscription = pusher.subscribe(channel);
-      subscription.bind("support.updated", onUpdate);
-      subscription.bind("support.created", onUpdate);
-      subscription.bind("support.customer_message", onUpdate);
+      const handleUpdate = () => callbacksRef.current.onUpdate();
+      const handleTyping = (payload?: SupportTypingEvent) => {
+        if (payload && typeof payload.ticket_id === "string") {
+          callbacksRef.current.onTyping?.(payload);
+        }
+      };
+
+      subscription.bind("support.updated", handleUpdate);
+      subscription.bind("support.created", handleUpdate);
+      subscription.bind("support.customer_message", handleUpdate);
+      subscription.bind("support.typing", handleTyping);
 
       cleanup = () => {
         subscription.unbind_all();
@@ -101,5 +116,5 @@ export function useSupportRealtime(options: {
       cancelled = true;
       cleanup?.();
     };
-  }, [channel, config?.cluster, config?.enabled, config?.key, onUpdate, threadId]);
+  }, [channel, config?.cluster, config?.enabled, config?.key, threadId]);
 }
